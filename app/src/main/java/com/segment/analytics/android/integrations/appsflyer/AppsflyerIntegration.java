@@ -204,13 +204,13 @@ public class AppsflyerIntegration extends Integration<AppsFlyerLib> {
 
             Properties properties = new Properties().putValue("provider", "AppsFlyer");
 
+            // replace original campaign with new created
+            properties.putAll(attributionData);
+            properties.putValue("campaign", campaign);
+            
             // Remove properties set in campaign.
             properties.remove("media_source");
             properties.remove("adgroup");
-
-            // replace original campaign with new created
-            properties.putValue("campaign", campaign);
-            properties.putAll(attributionData);
 
             // If you are working with networks that don't allow passing user level data to 3rd parties,
             // you will need to apply code to filter out these networks before calling
